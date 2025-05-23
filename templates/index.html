@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Parser</title>
+</head>
+<body>
+    <h1>Upload Your Resume (PDF)</h1>
+    <form action="/resume/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="application/pdf" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if parsed_data %}
+        <h2>Parsed Resume Data:</h2>
+        <ul>
+            <li><strong>Name:</strong> {{ parsed_data.name }}</li>
+            <li><strong>Email:</strong> {{ parsed_data.email }}</li>
+            <li><strong>Phone:</strong> {{ parsed_data.phone }}</li>
+            <li><strong>Skills:</strong> {{ parsed_data.skills | join(", ") }}</li>
+            <li><strong>Education:</strong> <pre>{{ parsed_data.education }}</pre></li>
+            <li><strong>Experience:</strong> <pre>{{ parsed_data.experience }}</pre></li>
+            <li><strong>Projects:</strong> <pre>{{ parsed_data.projects }}</pre></li>
+            <li><strong>Certifications:</strong> <pre>{{ parsed_data.certifications }}</pre></li>
+            <li><strong>LinkedIn:</strong> <a href="{{ parsed_data.linkedin }}" target="_blank">{{ parsed_data.linkedin }}</a></li>
+            <li><strong>GitHub:</strong> <a href="{{ parsed_data.github }}" target="_blank">{{ parsed_data.github }}</a></li>
+        </ul>
+    {% endif %}
+</body>
+</html>

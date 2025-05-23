@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -48,5 +48,19 @@
       }
     }
   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Parser</title>
+</head>
+<body>
+    <h1>Upload Your Resume (PDF)</h1>
+    <form action="/resume/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="application/pdf" required />
+        <button type="submit">Upload</button>
+    </form>
 </body>
 </html>
